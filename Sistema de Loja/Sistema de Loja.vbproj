@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{509C012A-C9CF-41C0-89A3-F22690CB059B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sistema_de_Loja.My.MyApplication</StartupObject>
+    <RootNamespace>Sistema_de_Loja</RootNamespace>
+    <AssemblyName>Sistema de Loja</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Sistema de Loja.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Sistema de Loja.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form_Produtos\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormCadasClinte.Designer.vb">
+      <DependentUpon>FormCadasClinte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormCadasClinte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormCadasFornece.Designer.vb">
+      <DependentUpon>FormCadasFornece.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormCadasFornece.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormFuncionarios.Designer.vb">
+      <DependentUpon>FormFuncionarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormFuncionarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormImprimir.Designer.vb">
+      <DependentUpon>FormImprimir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormImprimir.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormSaidaProduto.Designer.vb">
+      <DependentUpon>FormSaidaProduto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormSaidaProduto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormEntradaProduto.Designer.vb">
+      <DependentUpon>FormEntradaProduto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormEntradaProduto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormCadastroProdut.Designer.vb">
+      <DependentUpon>FormCadastroProdut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormCadastroProdut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormRelaProdutEstoq.Designer.vb">
+      <DependentUpon>FormRelaProdutEstoq.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormRelaProdutEstoq.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormTelaVenda.Designer.vb">
+      <DependentUpon>FormTelaVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormTelaVenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormVendasRealisadas.Designer.vb">
+      <DependentUpon>FormVendasRealisadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormVendasRealisadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form_Produtos\Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormCadasClinte.resx">
+      <DependentUpon>FormCadasClinte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormCadasFornece.resx">
+      <DependentUpon>FormCadasFornece.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormFuncionarios.resx">
+      <DependentUpon>FormFuncionarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormImprimir.resx">
+      <DependentUpon>FormImprimir.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormSaidaProduto.resx">
+      <DependentUpon>FormSaidaProduto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormEntradaProduto.resx">
+      <DependentUpon>FormEntradaProduto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormCadastroProdut.resx">
+      <DependentUpon>FormCadastroProdut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormRelaProdutEstoq.resx">
+      <DependentUpon>FormRelaProdutEstoq.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormTelaVenda.resx">
+      <DependentUpon>FormTelaVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormVendasRealisadas.resx">
+      <DependentUpon>FormVendasRealisadas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkyNetSystem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excluir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fechar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aqua Pure Clock2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursosalunos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign In.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contact.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\237.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_cart_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\window_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_cart1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grafico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pizza.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
