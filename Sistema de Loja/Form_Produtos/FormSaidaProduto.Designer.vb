@@ -30,13 +30,17 @@ Partial Class FormSaidaProduto
         Me.cbPesquisaEntr = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnSalvarEntradaProd = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtSaidaProduto = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dgSaidaProduto = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtPesquisaProdSai = New System.Windows.Forms.TextBox()
+        Me.txtSaidaProduto = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtCustoUnitario = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtCustoTotalSaid = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.dgSaidaProduto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -81,16 +85,6 @@ Partial Class FormSaidaProduto
         Me.btnSalvarEntradaProd.Name = "btnSalvarEntradaProd"
         Me.btnSalvarEntradaProd.UseVisualStyleBackColor = True
         '
-        'Label4
-        '
-        resources.ApplyResources(Me.Label4, "Label4")
-        Me.Label4.Name = "Label4"
-        '
-        'txtSaidaProduto
-        '
-        resources.ApplyResources(Me.txtSaidaProduto, "txtSaidaProduto")
-        Me.txtSaidaProduto.Name = "txtSaidaProduto"
-        '
         'Label3
         '
         resources.ApplyResources(Me.Label3, "Label3")
@@ -124,10 +118,49 @@ Partial Class FormSaidaProduto
         Me.txtPesquisaProdSai.ForeColor = System.Drawing.SystemColors.MenuText
         Me.txtPesquisaProdSai.Name = "txtPesquisaProdSai"
         '
+        'txtSaidaProduto
+        '
+        resources.ApplyResources(Me.txtSaidaProduto, "txtSaidaProduto")
+        Me.txtSaidaProduto.ForeColor = System.Drawing.Color.Red
+        Me.txtSaidaProduto.Name = "txtSaidaProduto"
+        '
+        'Label4
+        '
+        resources.ApplyResources(Me.Label4, "Label4")
+        Me.Label4.Name = "Label4"
+        '
+        'txtCustoUnitario
+        '
+        resources.ApplyResources(Me.txtCustoUnitario, "txtCustoUnitario")
+        Me.txtCustoUnitario.Name = "txtCustoUnitario"
+        '
+        'Label8
+        '
+        resources.ApplyResources(Me.Label8, "Label8")
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label8.Name = "Label8"
+        '
+        'txtCustoTotalSaid
+        '
+        resources.ApplyResources(Me.txtCustoTotalSaid, "txtCustoTotalSaid")
+        Me.txtCustoTotalSaid.Name = "txtCustoTotalSaid"
+        '
+        'Label9
+        '
+        resources.ApplyResources(Me.Label9, "Label9")
+        Me.Label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label9.Name = "Label9"
+        '
         'FormSaidaProduto
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.txtCustoTotalSaid)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.txtCustoUnitario)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.txtSaidaProduto)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -135,8 +168,6 @@ Partial Class FormSaidaProduto
         Me.Controls.Add(Me.cbPesquisaEntr)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnSalvarEntradaProd)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtSaidaProduto)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.dgSaidaProduto)
         Me.Controls.Add(Me.Label2)
@@ -160,11 +191,15 @@ Partial Class FormSaidaProduto
     Friend WithEvents cbPesquisaEntr As ComboBox
     Friend WithEvents Button2 As Button
     Friend WithEvents btnSalvarEntradaProd As Button
-    Friend WithEvents Label4 As Label
-    Friend WithEvents txtSaidaProduto As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents dgSaidaProduto As DataGridView
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents txtPesquisaProdSai As TextBox
+    Friend WithEvents txtSaidaProduto As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtCustoUnitario As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents txtCustoTotalSaid As TextBox
+    Friend WithEvents Label9 As Label
 End Class

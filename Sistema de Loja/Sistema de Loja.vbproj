@@ -11,8 +11,24 @@
     <AssemblyName>Sistema de Loja</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,11 +62,23 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Sistema Vendas SkyNetSystem.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -72,11 +100,27 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDSistemaLojaDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDSistemaLojaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WsCotaDolar\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Form_Produtos\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Produtos\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormBackup.Designer.vb">
+      <DependentUpon>FormBackup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormBackup.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Produtos\FormCadasClinte.Designer.vb">
@@ -91,6 +135,30 @@
     <Compile Include="Form_Produtos\FormCadasFornece.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form_Produtos\FormDevolucao.Designer.vb">
+      <DependentUpon>FormDevolucao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormDevolucao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormEditarProd.Designer.vb">
+      <DependentUpon>FormEditarProd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormEditarProd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormEstorno.Designer.vb">
+      <DependentUpon>FormEstorno.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormEstorno.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormFiados.Designer.vb">
+      <DependentUpon>FormFiados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormFiados.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_Produtos\FormFuncionarios.Designer.vb">
       <DependentUpon>FormFuncionarios.vb</DependentUpon>
     </Compile>
@@ -101,6 +169,36 @@
       <DependentUpon>FormImprimir.vb</DependentUpon>
     </Compile>
     <Compile Include="Form_Produtos\FormImprimir.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormLogin.Designer.vb">
+      <DependentUpon>FormLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormPesquisa.Designer.vb">
+      <DependentUpon>FormPesquisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormPesquisa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormProduDevolvido.Designer.vb">
+      <DependentUpon>FormProduDevolvido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormProduDevolvido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\Formquemsomos.designer.vb">
+      <DependentUpon>Formquemsomos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\Formquemsomos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormQuitaDivi.Designer.vb">
+      <DependentUpon>FormQuitaDivi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormQuitaDivi.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Produtos\FormSaidaProduto.Designer.vb">
@@ -133,12 +231,31 @@
     <Compile Include="Form_Produtos\FormTelaVenda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form_Produtos\FormVendaManual.Designer.vb">
+      <DependentUpon>FormVendaManual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormVendaManual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Produtos\FormVendasAgrupadas.Designer.vb">
+      <DependentUpon>FormVendasAgrupadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FormVendasAgrupadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_Produtos\FormVendasRealisadas.Designer.vb">
       <DependentUpon>FormVendasRealisadas.vb</DependentUpon>
     </Compile>
     <Compile Include="Form_Produtos\FormVendasRealisadas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form_Produtos\FrmAguarde.Designer.vb">
+      <DependentUpon>FrmAguarde.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Produtos\FrmAguarde.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\ModuleVariaveis.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -154,10 +271,47 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Relatorio\CrystalReport1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorio\DataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio\dsRelatorio.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRelatorio.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio\dsRelatorio.vb">
+      <DependentUpon>dsRelatorio.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio\dsRelatorio2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRelatorio2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio\FormRelatorio.Designer.vb">
+      <DependentUpon>FormRelatorio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio\FormRelatorio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms.vb" />
+    <Compile Include="Windows\Forms1.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form_Produtos\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormBackup.resx">
+      <DependentUpon>FormBackup.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Produtos\FormCadasClinte.resx">
       <DependentUpon>FormCadasClinte.vb</DependentUpon>
@@ -165,11 +319,38 @@
     <EmbeddedResource Include="Form_Produtos\FormCadasFornece.resx">
       <DependentUpon>FormCadasFornece.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormDevolucao.resx">
+      <DependentUpon>FormDevolucao.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormEditarProd.resx">
+      <DependentUpon>FormEditarProd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormEstorno.resx">
+      <DependentUpon>FormEstorno.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormFiados.resx">
+      <DependentUpon>FormFiados.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Produtos\FormFuncionarios.resx">
       <DependentUpon>FormFuncionarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Produtos\FormImprimir.resx">
       <DependentUpon>FormImprimir.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormLogin.resx">
+      <DependentUpon>FormLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormPesquisa.resx">
+      <DependentUpon>FormPesquisa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormProduDevolvido.resx">
+      <DependentUpon>FormProduDevolvido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\Formquemsomos.resx">
+      <DependentUpon>Formquemsomos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormQuitaDivi.resx">
+      <DependentUpon>FormQuitaDivi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Produtos\FormSaidaProduto.resx">
       <DependentUpon>FormSaidaProduto.vb</DependentUpon>
@@ -186,8 +367,17 @@
     <EmbeddedResource Include="Form_Produtos\FormTelaVenda.resx">
       <DependentUpon>FormTelaVenda.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormVendaManual.resx">
+      <DependentUpon>FormVendaManual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FormVendasAgrupadas.resx">
+      <DependentUpon>FormVendasAgrupadas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Produtos\FormVendasRealisadas.resx">
       <DependentUpon>FormVendasRealisadas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Produtos\FrmAguarde.resx">
+      <DependentUpon>FrmAguarde.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -195,8 +385,51 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\FormRelatorio.resx">
+      <DependentUpon>FormRelatorio.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BDSistemaLojaDataSet.xsc">
+      <DependentUpon>BDSistemaLojaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BDSistemaLojaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDSistemaLojaDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDSistemaLojaDataSet.xss">
+      <DependentUpon>BDSistemaLojaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\FachadaWSSGS.wsdl" />
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getUltimosValoresSerieVOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getUltimoValorVOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getUltimoValorXMLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getValorEspecialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getValoresSeriesVOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getValoresSeriesXMLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.getValorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCotaDolar\Sistema_de_Loja.WsCotaDolar.WSSerieVO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -209,6 +442,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Relatorio\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorio\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Relatorio\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorio\dsRelatorio.xsc">
+      <DependentUpon>dsRelatorio.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorio\dsRelatorio.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRelatorio.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Relatorio\dsRelatorio.xss">
+      <DependentUpon>dsRelatorio.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorio\dsRelatorio2.xsc">
+      <DependentUpon>dsRelatorio2.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorio\dsRelatorio2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRelatorio2.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Relatorio\dsRelatorio2.xss">
+      <DependentUpon>dsRelatorio2.xsd</DependentUpon>
+    </None>
     <None Include="Resources\SkyNetSystem.png" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +539,76 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Pizza.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notes_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notes_edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_lock1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_cart_down.png" />
+    <None Include="Resources\shopping_cart_down1.png" />
+    <None Include="Resources\Find6.ico" />
+    <None Include="Resources\icons8-vassoura-48.png" />
+    <None Include="Resources\Pendrive.png" />
+    <None Include="Resources\refresh_update_15608.png" />
+    <None Include="Resources\windows_update_15354.png" />
+    <None Include="Resources\file_cab_15475.png" />
+    <None Include="Resources\Impressora.png" />
+    <None Include="Resources\Impressora1.png" />
+    <None Include="Resources\printer_text_10868 %281%29.png" />
+    <None Include="Resources\Contrução.gif" />
+    <None Include="Connected Services\WsCotaDolar\configuration91.svcinfo" />
+    <None Include="Connected Services\WsCotaDolar\configuration.svcinfo" />
+    <None Include="Connected Services\WsCotaDolar\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Resources\US-dollar_25324.png" />
+    <None Include="Resources\Symbol-Help.ico" />
+    <None Include="Resources\Whats_app.jpg" />
+    <None Include="Resources\Whats.jpg" />
+    <Content Include="Sistema Vendas SkyNetSystem.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WsCotaDolar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

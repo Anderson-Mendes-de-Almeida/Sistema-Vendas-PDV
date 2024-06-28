@@ -125,7 +125,7 @@ Partial Class FormRelaProdutEstoq
         Me.TabPage1.Location = New System.Drawing.Point(4, 24)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(946, 311)
+        Me.TabPage1.Size = New System.Drawing.Size(1044, 422)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Detalhes"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -143,7 +143,7 @@ Partial Class FormRelaProdutEstoq
         Me.dgProduto.MultiSelect = False
         Me.dgProduto.Name = "dgProduto"
         Me.dgProduto.ReadOnly = True
-        Me.dgProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dgProduto.Size = New System.Drawing.Size(932, 246)
         Me.dgProduto.TabIndex = 5
         '

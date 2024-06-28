@@ -28,10 +28,6 @@ Public Class FormRelaProdutEstoq
 
             dgProduto.DataSource = ds.Tables("TBProduto")
 
-
-            ''Procedure para calcular Vlr_totalSaida
-            'SomaVlrTotSaida()
-
             Con.Close()
             Con.Dispose()
 
@@ -42,7 +38,8 @@ Public Class FormRelaProdutEstoq
 
         End Try
 
-
+        '  pintado row datagrid
+        ConferiEstMin()
 
     End Sub
 
@@ -80,26 +77,26 @@ Public Class FormRelaProdutEstoq
                 Leitor.Read()
 
                 douVlrUnid = Leitor("vlr_unidade")
-                intQtdSaida = Leitor("qtd_Saida")
-                douvrl_TotaEntrada = Leitor("Vlr_TotalEntrada")
-                douEm_Estoque = Leitor("Em_Estoque")
+                intQtdSaida = Leitor("qtd_Saida")                ' quantidade que ja vendeu
+                douvrl_TotaEntrada = Leitor("Vlr_TotalEntrada") ' valor em reais de todos produtos comprado
+                douEm_Estoque = Leitor("Em_Estoque")            'quantida em estoque
 
                 '-----calculo Valor total Saida--------------------QtdSaida*CustoMédioUnidade------
-                Para_douVlrTotalSai = douVlrUnid * intQtdSaida
+                Para_douVlrTotalSai = douVlrUnid * intQtdSaida                                          'Ponto em estudo---------------------------------->
 
                 '------calculo de subtração saldo----------------Valor Total Entrada - Valor Total Saida--
-                Para_Saldo = douvrl_TotaEntrada - Para_douVlrTotalSai
+                Para_Saldo = douvrl_TotaEntrada - Para_douVlrTotalSai      ' Saldo é grana em Estouque
 
                 '------calculo de Divisão Custo médio Unidade------Saldo/Em_Estoque-----
-                Para_CutMedio = Para_Saldo / douEm_Estoque
-
-
-
-
-
+                Para_CutMedio = Para_Saldo / douEm_Estoque '
 
                 Leitor.Close()
+                'If FormSaidaProduto.Visible = True Then
+                '    MessageBox.Show("Form Visivel")
 
+
+
+                'End If
 
                 Dim sql2 As String = "UPDATE TBProduto SET Vlr_TotalSaida=?, Saldo=?, vlr_Unidade=? WHERE CodBarras= " & douCodBarras.Item(index)
                 Dim Comando2 As New OleDbCommand(sql2, Con)
@@ -123,11 +120,7 @@ Public Class FormRelaProdutEstoq
 
             End Try
 
-
         Next
-
-
-
 
     End Sub
 
@@ -143,12 +136,19 @@ Public Class FormRelaProdutEstoq
             intEm_Estq = dgProduto.Rows(i).Cells(8).Value.ToString
 
             'pegando valor EstqMinimo/varendo as linha de cima para baixo
-            intEstqMin = dgProduto.Rows(i).Cells(12).Value
+            intEstqMin = dgProduto.Rows(i).Cells(13).Value
 
+
+            ''============================================================================Colorindo Colunas DataGridView==========
+            ''Aqui coloco a coluna Valor venda produto em destaque
+            dgProduto.Rows(i).Cells("Vlr_Venda").Style.BackColor = Color.Blue
+
+            ''Aqui coloco a coluna em destaque
+            dgProduto.Rows(i).Cells("Em_Estoque").Style.BackColor = Color.Yellow
+
+            ''=====================================================================================================================
             If intEm_Estq < intEstqMin Then
                 dgProduto.Rows(i).DefaultCellStyle.ForeColor = Color.Red
-
-                dgProduto.Columns(12).Name = "Repor estoque"
 
 
             End If
@@ -158,23 +158,27 @@ Public Class FormRelaProdutEstoq
 
     End Sub
     Private Sub FormatGridView()
+
         With dgProduto
+
 
             'escondendo colunas------
             .Columns(0).Visible = False
-            '.Columns(4).Visible = False
+            ' .Columns(12).Visible = False
 
 
             'Regulando tamanho colunas-----
-            .Columns(1).Width = 150
-            .Columns(2).Width = 150
+            .Columns(1).Width = 100
+            .Columns(2).Width = 400
 
             'Editando Cabeçalho
             '.Columns(0).HeaderText = "Tesntando"
             .Columns(1).HeaderText = "Codigo de Barras"
             .Columns(2).HeaderText = "Produto"
+
+
             .Columns(3).HeaderText = "Total Entrada"
-            .Columns(4).HeaderText = "Custo Unitario"
+            .Columns(4).HeaderText = "Custo Médio Unitario"
             .Columns(5).HeaderText = "Valor Total Entrada"
 
             .Columns(6).HeaderText = "Qtd.Saida"
@@ -185,8 +189,9 @@ Public Class FormRelaProdutEstoq
             .Columns(9).HeaderText = "Saldo"
             .Columns(10).HeaderText = "Valor Venda Produto"
             .Columns(11).HeaderText = "Produtos Vendidos"
-            .Columns(12).HeaderText = "Qtd Minima Estoque"
-            .Columns(13).HeaderText = "Data da Compra"
+            .Columns(12).HeaderText = "Lucro"
+            .Columns(13).HeaderText = "Qtd Minima Estoque"
+            .Columns(14).HeaderText = "Data da Compra"
 
 
             'Aqui formato as colunas para moeda "Reais"
@@ -197,12 +202,13 @@ Public Class FormRelaProdutEstoq
             .Columns(9).DefaultCellStyle.Format = "c2"
             .Columns(10).DefaultCellStyle.Format = "c2"
             .Columns(11).DefaultCellStyle.Format = "c2"
+            .Columns(12).DefaultCellStyle.Format = "c2"
 
+            ''  .ColumnHeadersDefaultCellStyle.Font = New Font("verdana", 10, FontStyle.Bold)
 
-            'dgvPedidos.Columns("valor_total").DefaultCellStyle.Format = "C2"
-
+            ''dgProduto.Rows(10).DefaultCellStyle.BackColor = Color.Purple
+            ''.ColumnHeadersDefaultCellStyle.BackColor = Color.Yellow
         End With
-
 
 
     End Sub
@@ -244,7 +250,7 @@ Public Class FormRelaProdutEstoq
                 Con.ConnectionString = My.Settings.CN1
                 Con.Open()
 
-            Dim SQL As String = " SELECT * FROM TBProduto Where codBarras LIKE '%" & Convert.ToInt32(txtPesquisaProdu.Text) & "%' "
+            Dim SQL As String = " SELECT * FROM TBProduto Where codBarras LIKE '%" & Convert.ToInt64(txtPesquisaProdu.Text) & "%' "
 
             Dim comando As New OleDbCommand(SQL, Con)
 
@@ -297,13 +303,15 @@ Public Class FormRelaProdutEstoq
         FormCadastroProdut.Show()
 
         Me.Visible = False
+        Me.Dispose()
 
 
 
     End Sub
 
     Private Sub FormRelaProdutEstoq_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Refresh()
+        dgProduto.Refresh()
 
         CarregaRelaProdutEstoq()
 
@@ -347,8 +355,8 @@ Public Class FormRelaProdutEstoq
             Leitor.Read()
 
             btTotalProdutos.Text = Leitor("qtd")
-            txtvalorEntrada.Text = Leitor("vlr") 'If Me.lblProdutosVendidos.Text = Leitor("qtd_S").ToString = (Nothing) Then
-            btTotalEntrada.Text = Leitor("qtdE")
+            txtvalorEntrada.Text = Leitor("vlr")  'If Me.lblProdutosVendidos.Text = Leitor("qtd_S").ToString = (Nothing) Then
+            btTotalEntrada.Text = Leitor("qtdE") & ""
             Me.btTotalSaida.Text = Leitor("qtds").ToString
             txtSaldoEstoque.Text = Leitor("emstq").ToString
             txtTotalReaisVendas.Text = Leitor("vd").ToString
@@ -358,8 +366,8 @@ Public Class FormRelaProdutEstoq
             Con.Close()
 
         Catch ex As Exception
-            '  MessageBox.Show("Erro ao conectar com Base de Dados : " & ex.Message)
-            '   MessageBox.Show("Não a Produtos Cadastrados!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            MessageBox.Show("Não existe ainda produtos cadastrados!", "SkyNetSystem", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         End Try
 
@@ -380,6 +388,43 @@ Public Class FormRelaProdutEstoq
 
         CarregaRelaProdutEstoq()
 
+        '------------------------------------------------------------------------------------
+        'Dim douVlrSaiTotal As Double
+        'Dim douVlr_Venda As Double
+        'Dim douLucro As Double
+
+        ''Calculando Valor de Vendas
+        'Dim cont As Integer
+
+        'Try
+        '    cont = dgProduto.Rows.Count - 1
+
+        '    For T = 0 To cont
+
+        '        douVlrSaiTotal = dgProduto.Rows(T).Cells(7).Value ' valor de compra do produto
+        '        douVlr_Venda = dgProduto.Rows(T).Cells(11).Value   ' valor de venda do produto
+        '        '===============================================================
+        '        If PerguntaLucro = True Then
+        '            'aqui tenho 
+        '            douLucro = douVlr_Venda - douVlrSaiTotal
+
+        '            dgProduto.Rows(T).Cells(12).Value = douLucro
+
+
+
+        '        End If
+
+        '    Next
+        '    '=======================================================================
+        '    PerguntaLucro = False
+
+        'Catch ex As Exception
+        '    MessageBox.Show(ex.Message)
+        'End Try
+
+
+
+
 
     End Sub
 
@@ -387,8 +432,17 @@ Public Class FormRelaProdutEstoq
 
         dgProduto.Dispose()
 
+        ''atualizando form1
+        ''  Form1.Close()
+        Form1.Show()
+        'Form1.Refresh()
+
+
+
         Me.Close()
         Me.Dispose()
+
+
 
     End Sub
 

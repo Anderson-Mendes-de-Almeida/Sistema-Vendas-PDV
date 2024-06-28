@@ -1,7 +1,11 @@
 ﻿Imports System.Data.OleDb
 
+
 Public Class FormSaidaProduto
     Dim intQtd_Saida As Integer
+    Dim douVlrTotalEntr As Double
+    Dim douQtdEntra As Double
+
 
     Private Sub ConferiEstMin3()
 
@@ -11,10 +15,10 @@ Public Class FormSaidaProduto
         For i As Integer = 0 To dgSaidaProduto.Rows.Count() - 1
 
             'pegando o valor Em_estoque/varendo as linha de cima para baixo
-            intEm_Estq = dgSaidaProduto.Rows(i).Cells(3).Value.ToString
+            intEm_Estq = dgSaidaProduto.Rows(i).Cells(5).Value.ToString
 
             'pegando valor EstqMinimo/varendo as linha de cima para baixo
-            intEstqMin = dgSaidaProduto.Rows(i).Cells(5).Value
+            intEstqMin = dgSaidaProduto.Rows(i).Cells(7).Value
 
             If intEm_Estq < intEstqMin Then
                 dgSaidaProduto.Rows(i).DefaultCellStyle.ForeColor = Color.Red
@@ -33,7 +37,7 @@ Public Class FormSaidaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
 
-            Dim SQL As String = " SELECT codbarras, descproduto, vlr_venda, Em_Estoque,  Qtd_Saida,
+            Dim SQL As String = " SELECT codbarras, descproduto, Qtd_Entrada, Vlr_TotalEntrada, vlr_venda, Em_Estoque,  Qtd_Saida,
                                   estoque_minimo  FROM TBProduto"
             Dim comando As New OleDbCommand(SQL, Con)
 
@@ -65,7 +69,7 @@ Public Class FormSaidaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
 
-            Dim SQL As String = " SELECT codbarras, descproduto, vlr_venda, Em_Estoque,  Qtd_Saida,
+            Dim SQL As String = " SELECT codbarras, descproduto, Qtd_Entrada, Vlr_TotalEntrada, vlr_venda, Em_Estoque,  Qtd_Saida,
                                   estoque_minimo  FROM TBProduto Where DescProduto LIKE '%" & txtPesquisaProdSai.Text & "%' "
             Dim comando As New OleDbCommand(SQL, Con)
 
@@ -96,8 +100,8 @@ Public Class FormSaidaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
 
-            Dim SQL As String = " SELECT codbarras, descproduto, vlr_venda, Em_Estoque, Qtd_Saida,
-                                  estoque_minimo FROM TBProduto Where codBarras LIKE '%" & Convert.ToInt32(txtPesquisaProdSai.Text) & "%' "
+            Dim SQL As String = " SELECT codbarras, descproduto, Qtd_Entrada, Vlr_TotalEntrada, vlr_venda, Em_Estoque, Qtd_Saida,
+                                  estoque_minimo FROM TBProduto Where codBarras LIKE '%" & Convert.ToInt64(txtPesquisaProdSai.Text) & "%' "
 
             Dim comando As New OleDbCommand(SQL, Con)
 
@@ -123,8 +127,8 @@ Public Class FormSaidaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
             'Dim comando As New OleDbCommand
-            Dim Sql As String = " Select codbarras, descproduto, vlr_venda, Em_Estoque, Qtd_Saida,
-                                  estoque_minimo FROM TBProduto"
+            Dim Sql As String = " Select codbarras, descproduto, Qtd_Entrada, Vlr_TotalEntrada, vlr_venda, Em_Estoque, Qtd_Saida,
+                                  estoque_minimo FROM TBProduto "
             Dim comando As New OleDbCommand(Sql, Con)
 
             Dim da As OleDbDataAdapter = New OleDbDataAdapter(comando)
@@ -160,25 +164,27 @@ Public Class FormSaidaProduto
 
 
             '''''''Regulando tamanho colunas-----
-            .Columns(2).Width = 150
-            .Columns(3).Width = 100
+            .Columns(1).Width = 200
+            ' .Columns(3).Width = 100
             ' .Columns(6).Width = 50
 
             'Editando Cabeçalho
             '  .Columns(0).HeaderText = "Código "
             .Columns(0).HeaderText = "Codigo de Barras"
             .Columns(1).HeaderText = "Produto"
-            .Columns(2).HeaderText = "Valor Venda"
-            .Columns(3).HeaderText = "Em Estoque"
-            .Columns(4).HeaderText = "Qtd_Saida"
-            .Columns(5).HeaderText = "Qtd Minima Estoque"
-            '.Columns(6).HeaderText = "Situação"
+            .Columns(2).HeaderText = "Qtd_Entrada"
+            .Columns(3).HeaderText = "Valor Total Entrada"
+            .Columns(4).HeaderText = "Valor Venda"
+            .Columns(5).HeaderText = "Em Estoque"
+            .Columns(6).HeaderText = "Qtd Saida"
+            .Columns(7).HeaderText = "Qtd Minimo Estoque"
+            '.Columns(6).HeaderText = "Estoque minimo"
             '.Columns(8).HeaderText = "Qtd Saida"
 
 
             ''''''''''Aqui formato as colunas para moeda "Reais"
-            .Columns(2).DefaultCellStyle.Format = "c2"
-            '.Columns(3).DefaultCellStyle.Format = "c2"
+            .Columns(3).DefaultCellStyle.Format = "c2"
+            .Columns(4).DefaultCellStyle.Format = "c2"
             '.Columns(5).DefaultCellStyle.Format = "c2"
             '.Columns(7).DefaultCellStyle.Format = "c2"
 
@@ -191,8 +197,6 @@ Public Class FormSaidaProduto
     End Sub
     Private Sub FormSaidaProduto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'limpando textbox
-        txtSaidaProduto.Clear()
 
         Try
 
@@ -200,7 +204,7 @@ Public Class FormSaidaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
             'Dim comando As New OleDbCommand
-            Dim Sql As String = " Select codBarras, descproduto,vlr_venda, Em_Estoque, 
+            Dim Sql As String = " Select codBarras, descproduto, Qtd_Entrada, Vlr_TotalEntrada, vlr_venda, Em_Estoque, 
                                   Qtd_saida, estoque_minimo FROM TBProduto"
             Dim comando As New OleDbCommand(Sql, Con)
 
@@ -286,60 +290,65 @@ Public Class FormSaidaProduto
     End Sub
 
     Private Sub btnSalvarEntradaProd_Click(sender As Object, e As EventArgs) Handles btnSalvarEntradaProd.Click
+        PerguntaLucro = False
+
+        Dim param_VlrTotalEntr As Double
+
         'Pegando Código barras DataGridView
         Dim intcodBarras As Double
 
         'variavel quantidade em Estoque
         Dim intEm_Estoque As Integer
-
+        Dim intQtd_Entrada As Integer
 
         Try
-            If txtSaidaProduto.Text = Nothing Then
-                MessageBox.Show("Digite a Quantidade de Produtos para Atualizar!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Return
-            Else
-
-                Dim Con As New OleDbConnection
-                Con.ConnectionString = My.Settings.CN1
-                Con.Open()
-
-                intcodBarras = dgSaidaProduto.CurrentRow.Cells(0).Value.ToString
-
-                ' qtd_saida=?
-                Dim sql As String = "UPDATE TBProduto SET Em_Estoque=?, Qtd_saida=? WHERE codBarras=" & intcodBarras
-                Dim Comando As New OleDbCommand(sql, Con)
-
-                '-----------------------------tirando produtos de Em_Estque e Qtd_saida-----
-
-                intEm_Estoque = Val(txtEm_Estoque.Text) - Val(txtSaidaProduto.Text)
-                '----------------------------acrescentando o valor em Qtd_Entrada
-                Dim intQtd_SaidaParam As Integer = Val(txtSaidaProduto.Text) + Val(intQtd_Saida)
-
-                ''---------------------------------------------------------------------------
-                Comando.Parameters.Clear()
-                Comando.Parameters.Add(New OleDb.OleDbParameter("@Em_Estoque", intEm_Estoque))
-                Comando.Parameters.Add(New OleDb.OleDbParameter("@Qtd_Entrada", intQtd_SaidaParam))
-
-                Comando.ExecuteNonQuery()
 
 
-                Con.Close()
+            Dim Con As New OleDbConnection
+            Con.ConnectionString = My.Settings.CN1
+            Con.Open()
 
-                MessageBox.Show("Produto Atualizado com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            intcodBarras = dgSaidaProduto.CurrentRow.Cells(0).Value.ToString
 
-                dgSaidaProduto.Refresh()
 
-            End If
+            Dim sql As String = "UPDATE TBProduto SET  Em_Estoque=?, Qtd_Entrada=?, vlr_totalEntrada=?  WHERE codBarras=" & intcodBarras
+            Dim Comando As New OleDbCommand(sql, Con)
+
+            '-----------------------------tirando produtos de Em_Estque e Qtd_saida-----
+
+            intEm_Estoque = Val(txtEm_Estoque.Text) - Val(txtSaidaProduto.Text)
+            ''----------------------------tirando o valor em Qtd_Entrada
+            intQtd_Entrada = Val(douQtdEntra) - Val(txtSaidaProduto.Text)
+
+            'Subtraindo valor total entrada no camppo valor total Entrada
+            Dim douCustoTotalSaid As Double = txtCustoTotalSaid.Text
+            param_VlrTotalEntr = (douVlrTotalEntr) - (douCustoTotalSaid)
+
+            ''---------------------------------------------------------------------------
+            Comando.Parameters.Clear()
+            Comando.Parameters.Add(New OleDb.OleDbParameter("@Em_Estoque", intEm_Estoque))
+            Comando.Parameters.Add(New OleDb.OleDbParameter("@Qtd_Entrada", intQtd_Entrada))
+            Comando.Parameters.Add(New OleDb.OleDbParameter("@vlr_totalEntrada", param_VlrTotalEntr))
+
+
+            Comando.ExecuteNonQuery()
+
+
+            Con.Close()
+
+            MessageBox.Show("Produto Atualizado com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            dgSaidaProduto.Refresh()
+
+            txtSaidaProduto.Clear()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
 
-            'Limpando campos txt
-            txtSaidaProduto.Clear()
-            txtEm_Estoque.Clear()
-
         End Try
+        'Fechando FormRelaProduEstoque para atualizar
+        FormRelaProdutEstoq.Close()
 
         'Essa procedure serve para atualizar os registros apos exclusão, inclusão
         AtualizaRegistros()
@@ -349,6 +358,23 @@ Public Class FormSaidaProduto
 
         'conferindo estoque minimo e colorindo
         ConferiEstMin3()
+
+        'chamando FormRelaProduto
+        FormRelaProdutEstoq.Show()
+        FormRelaProdutEstoq.Refresh()
+
+        ' Me.Close()
+        Form1.Close()
+
+        'Limpando textbox
+        txtEm_Estoque.Clear()
+        txtSaidaProduto.Clear()
+        txtCustoUnitario.Clear()
+        txtCustoTotalSaid.Clear()
+
+
+
+
     End Sub
 
     Private Sub dgSaidaProduto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgSaidaProduto.CellContentClick
@@ -356,46 +382,43 @@ Public Class FormSaidaProduto
     End Sub
 
     Private Sub dgSaidaProduto_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgSaidaProduto.CellClick
-        txtSaidaProduto.Focus()
-
-
-
-        'If ((Me.dgSaidaProduto.CurrentRow.Cells(4).Value.ToString) = (Nothing)) Then 'caso seja Nothing dara a mensagem / se nao for botado o Add("") darra erro
-        '    MessageBox.Show("não a valores em estoque!")
-        '    Return
-        'Else
-        ' ------------------------------------------------------------
+        'Abilitando textBox e Botões
+        txtSaidaProduto.Enabled = True
+        'txtCustoUnitario.Enabled = True
+        'btnSalvarEntradaProd.Enabled = True
 
         '  ''''''Pegando a quantidade em estoque
-        Dim IntEmEstoq As String = dgSaidaProduto.CurrentRow.Cells(3).Value.ToString
+        Dim IntEmEstoq As String = dgSaidaProduto.CurrentRow.Cells(5).Value.ToString
 
         '''''''pegando o valor qta_saida do grid
         If ((Me.dgSaidaProduto.CurrentRow.Cells(4).Value.ToString) = (Nothing)) Then
 
         Else
+            douQtdEntra = dgSaidaProduto.CurrentRow.Cells(2).Value.ToString
+
             intQtd_Saida = dgSaidaProduto.CurrentRow.Cells(4).Value.ToString
+            douVlrTotalEntr = dgSaidaProduto.CurrentRow.Cells(3).Value.ToString
 
 
         End If
 
         txtEm_Estoque.Text = IntEmEstoq
 
+        txtSaidaProduto.Focus()
+        txtSaidaProduto.Text = ""
 
+    End Sub
 
+    Private Sub txtSaidaProduto_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub txtSaidaProduto_Click(sender As Object, e As EventArgs)
 
 
     End Sub
 
-    Private Sub txtSaidaProduto_TextChanged(sender As Object, e As EventArgs) Handles txtSaidaProduto.TextChanged
-
-    End Sub
-
-    Private Sub txtSaidaProduto_Click(sender As Object, e As EventArgs) Handles txtSaidaProduto.Click
-
-
-    End Sub
-
-    Private Sub txtSaidaProduto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSaidaProduto.KeyPress
+    Private Sub txtSaidaProduto_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Not (Char.IsDigit(e.KeyChar) OrElse Char.IsControl(e.KeyChar)) Then
             e.Handled = True
 
@@ -410,7 +433,119 @@ Public Class FormSaidaProduto
         End If
     End Sub
 
-    Private Sub txtSaidaProduto_KeyUp(sender As Object, e As KeyEventArgs) Handles txtSaidaProduto.KeyUp
+    Private Sub txtSaidaProduto_KeyUp(sender As Object, e As KeyEventArgs)
+
+    End Sub
+
+    Private Sub dgSaidaProduto_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgSaidaProduto.CellDoubleClick
+
+
+
+        'If rbEstorno.Checked = True Then
+
+        '    douCodBarrasEsto = dgSaidaProduto.CurrentRow.Cells(0).Value.ToString
+
+        '    FormEstorno.Show()
+
+        '    Close()
+        '    Dispose()
+
+        'ElseIf rbVendaManual.Checked = True Then
+
+        '    FormVendaManual.Show()
+
+        '    Close()
+        '    Dispose()
+
+
+
+        'End If
+
+    End Sub
+
+    Private Sub dgSaidaProduto_DoubleClick(sender As Object, e As EventArgs) Handles dgSaidaProduto.DoubleClick
+
+    End Sub
+
+    Private Sub txtCustoTotalSaid_TextChanged(sender As Object, e As EventArgs) Handles txtCustoTotalSaid.TextChanged
+        btnSalvarEntradaProd.Enabled = True
+        btnSalvarEntradaProd.Focus()
+        Try
+            txtCustoTotalSaid.Text = FormatCurrency(txtCustoTotalSaid.Text, 2, TriState.True, TriState.True, TriState.True).Replace("R$", "R$").Trim
+
+        Catch ex As Exception
+            Return
+
+        End Try
+    End Sub
+
+    Private Sub txtCustoTotalSaid_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCustoTotalSaid.KeyPress
+
+        If Not (Char.IsDigit(e.KeyChar) OrElse Char.IsControl(e.KeyChar)) Then
+            e.Handled = True
+
+        End If
+
+        If Asc(e.KeyChar) = 13 Then
+            btnSalvarEntradaProd.PerformClick()
+
+            'aqui tiro o som
+            e.Handled = True
+
+        End If
+
+
+
+
+
+
+    End Sub
+
+    Private Sub txtCustoUnitario_Leave(sender As Object, e As EventArgs) Handles txtCustoUnitario.Leave
+        Try
+            txtCustoUnitario.Text = FormatCurrency(txtCustoUnitario.Text, 2, TriState.True, TriState.True, TriState.True).Replace("R$", "R$").Trim
+
+        Catch ex As Exception
+            Return
+
+        End Try
+    End Sub
+
+    Private Sub txtCustoUnitario_LostFocus(sender As Object, e As EventArgs) Handles txtCustoUnitario.LostFocus
+
+        Try
+            Dim douCusTotal As Double
+
+            douCusTotal = txtSaidaProduto.Text * txtCustoUnitario.Text
+
+            txtCustoTotalSaid.Text = douCusTotal
+
+        Catch ex As Exception
+            Return
+
+        End Try
+
+
+
+
+    End Sub
+
+    Private Sub txtCustoUnitario_TextChanged(sender As Object, e As EventArgs) Handles txtCustoUnitario.TextChanged
+
+    End Sub
+
+    Private Sub txtSaidaProduto_TextChanged_1(sender As Object, e As EventArgs) Handles txtSaidaProduto.TextChanged
+
+    End Sub
+
+    Private Sub txtSaidaProduto_LostFocus(sender As Object, e As EventArgs) Handles txtSaidaProduto.LostFocus
+        txtCustoUnitario.Enabled = True
+        txtCustoUnitario.Focus()
+
+    End Sub
+
+    Private Sub txtCustoTotalSaid_LostFocus(sender As Object, e As EventArgs) Handles txtCustoTotalSaid.LostFocus
+
 
     End Sub
 End Class

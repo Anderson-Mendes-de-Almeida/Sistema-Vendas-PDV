@@ -129,6 +129,7 @@ Public Class FormCadasFornece
 
     End Sub
     Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
+        Form1.Close()
 
         Try
 
@@ -192,6 +193,9 @@ Public Class FormCadasFornece
         carregaGridForne()
 
         Limpacampos()
+
+        Form1.Show()
+
     End Sub
 
     Private Sub ToolStripStatusLabel4_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel4.Click

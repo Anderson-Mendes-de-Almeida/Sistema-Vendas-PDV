@@ -212,6 +212,8 @@ Public Class FormCadasClinte
     End Sub
 
     Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
+        Form1.Close()
+
 
         txtNomeCli.Focus()
 
@@ -278,6 +280,9 @@ Public Class FormCadasClinte
         ToolStripStatusLabel2.Enabled = False
 
         Limpacampos()
+
+        Form1.Show()
+
     End Sub
 
     Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles dtpCadastro.ValueChanged

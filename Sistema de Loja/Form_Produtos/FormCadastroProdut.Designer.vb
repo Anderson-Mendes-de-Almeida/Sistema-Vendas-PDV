@@ -95,7 +95,7 @@ Partial Class FormCadastroProdut
         'txtDescricao
         '
         Me.txtDescricao.Location = New System.Drawing.Point(15, 109)
-        Me.txtDescricao.MaxLength = 500
+        Me.txtDescricao.MaxLength = 80
         Me.txtDescricao.Name = "txtDescricao"
         Me.txtDescricao.Size = New System.Drawing.Size(431, 21)
         Me.txtDescricao.TabIndex = 3
@@ -215,6 +215,7 @@ Partial Class FormCadastroProdut
         Me.btCalcGanho.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btCalcGanho.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btCalcGanho.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btCalcGanho.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btCalcGanho.Location = New System.Drawing.Point(312, 203)
         Me.btCalcGanho.Name = "btCalcGanho"
         Me.btCalcGanho.Size = New System.Drawing.Size(134, 23)

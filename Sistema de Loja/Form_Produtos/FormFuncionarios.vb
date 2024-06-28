@@ -139,6 +139,9 @@ Public Class FormFuncionarios
     End Sub
 
     Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
+        'Fechando form para atualizar
+        Form1.Close()
+
         txtNomeFuncio.Focus()
 
         Try
@@ -204,6 +207,9 @@ Public Class FormFuncionarios
         ToolStripStatusLabel2.Enabled = False
 
         Limpacampos()
+
+        Form1.Show()
+
 
     End Sub
 

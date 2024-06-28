@@ -87,7 +87,7 @@ Partial Class FormEntradaProduto
         Me.dgEntradProduto.MultiSelect = False
         Me.dgEntradProduto.Name = "dgEntradProduto"
         Me.dgEntradProduto.ReadOnly = True
-        Me.dgEntradProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgEntradProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dgEntradProduto.Size = New System.Drawing.Size(698, 325)
         Me.dgEntradProduto.TabIndex = 3
         '
@@ -107,6 +107,7 @@ Partial Class FormEntradaProduto
         '
         Me.txtEntradaProduto.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtEntradaProduto.Enabled = False
         Me.txtEntradaProduto.Location = New System.Drawing.Point(722, 107)
         Me.txtEntradaProduto.Name = "txtEntradaProduto"
         Me.txtEntradaProduto.Size = New System.Drawing.Size(137, 21)
@@ -130,6 +131,7 @@ Partial Class FormEntradaProduto
         '
         Me.btnSalvarEntradaProd.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnSalvarEntradaProd.Enabled = False
         Me.btnSalvarEntradaProd.Location = New System.Drawing.Point(722, 249)
         Me.btnSalvarEntradaProd.Name = "btnSalvarEntradaProd"
         Me.btnSalvarEntradaProd.Size = New System.Drawing.Size(138, 27)
@@ -182,11 +184,11 @@ Partial Class FormEntradaProduto
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(724, 344)
+        Me.Label6.Location = New System.Drawing.Point(725, 344)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(147, 15)
+        Me.Label6.Size = New System.Drawing.Size(137, 15)
         Me.Label6.TabIndex = 13
-        Me.Label6.Text = "a quantidade de produtos"
+        Me.Label6.Text = "quantidade de produtos"
         '
         'Label7
         '
@@ -211,6 +213,7 @@ Partial Class FormEntradaProduto
         '
         Me.txtCustoUnitario.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtCustoUnitario.Enabled = False
         Me.txtCustoUnitario.Location = New System.Drawing.Point(722, 158)
         Me.txtCustoUnitario.Name = "txtCustoUnitario"
         Me.txtCustoUnitario.Size = New System.Drawing.Size(137, 21)

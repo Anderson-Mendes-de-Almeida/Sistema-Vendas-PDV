@@ -118,70 +118,142 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Contact" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Contact.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="window_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\window_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cursosalunos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cursosalunos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Aqua Pure Clock2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Aqua Pure Clock2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="page_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\page_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="visto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\visto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Grafico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Grafico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\chart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fechar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fechar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping_cart1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping_cart1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping_cart_accept" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping_cart_accept.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="237" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\237.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="excluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping_cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping_cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="page_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\page_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkyNetSystem" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SkyNetSystem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="database_accept" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database_accept.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sign In" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sign In.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="page_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\page_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cursosalunos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cursosalunos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping_cart1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping_cart1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contrução" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contrução.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grafico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Grafico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="application_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application_lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="page_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\page_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Find6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Find6.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_cab_15475" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file_cab_15475.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aqua Pure Clock2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aqua Pure Clock2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping_cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping_cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pendrive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pendrive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\window_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkyNetSystem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SkyNetSystem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping_cart_accept" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping_cart_accept.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Impressora" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Impressora.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping_cart_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping_cart_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-vassoura-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-vassoura-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="application_lock1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application_lock1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="US-dollar_25324" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\US-dollar_25324.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="windows_update_15354" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\windows_update_15354.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh_update_15608" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh_update_15608.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Pizza" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pizza.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Impressora1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Impressora1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="visto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\visto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="database_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Whats_app" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Whats_app.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="notes_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notes_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printer_text_10868 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer_text_10868 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="237" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\237.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contact" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Contact.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping_cart_down1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping_cart_down1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="excluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fechar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fechar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="notes_edit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notes_edit1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Symbol-Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Symbol-Help.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Whats" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Whats.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

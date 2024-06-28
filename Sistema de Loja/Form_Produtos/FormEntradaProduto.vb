@@ -1,38 +1,105 @@
 ﻿Imports System.Data.OleDb
 
 Public Class FormEntradaProduto
+    'variavel quantidade em Estoque
+    Dim intEm_Estoque As Integer
+    'variavel quantidade QtdEm_trada
+    Dim intQtd_Entrada2 As Integer
+    'varivel passando valor paametro
+    Dim param_VlrTotalEntr As Double
+
+
     'Pegando o codigo Protudo em DataGrid
     Dim intcodigo As Integer
-
+    'pegando codigo de barras
+    Dim douCodBarras As Double
     'Pegando a quantidade de entrada
     Dim intQtd_Entrada As Integer
     'pegando valor celula totalEntraProduto em dgEntradaProduto
     Dim douVlrTotalEntr As Double
+
+    Dim StrProduto As String
+    Dim douVlrUnitario As Double
+
+
+
+    Private Sub InsertTBEntrada()
+
+        Try
+
+
+            Dim Con As New OleDbConnection
+            Con.ConnectionString = My.Settings.CN1
+
+            Con.Open()
+
+
+            Dim Comando As New OleDbCommand
+            Comando.CommandText = "INSERT INTO TBEntrada ( codBarras, DescrProduto, ValorUnitario, Qtd_Entrada, ValorTotEntrada, DataEntrada )" & " VALUES (?, ?, ?, ?, ?,?)"
+
+
+
+            Comando.Parameters.Clear()
+            Comando.Parameters.Add("@codBarras", System.Data.OleDb.OleDbType.VarChar, 13).Value = douCodBarras
+            Comando.Parameters.Add("@descProduto", System.Data.OleDb.OleDbType.VarChar, 80).Value = StrProduto
+            Comando.Parameters.Add("@ValorUnitario", System.Data.OleDb.OleDbType.VarChar, 13).Value = txtCustoUnitario.Text
+            Comando.Parameters.Add("@Qtd_Entrada", System.Data.OleDb.OleDbType.VarChar, 13).Value = txtEntradaProduto.Text
+            Comando.Parameters.Add("@ValorTotEntrada", System.Data.OleDb.OleDbType.VarChar, 13).Value = txtCustoTotalEntr.Text
+            Comando.Parameters.Add("@DataEntrada", System.Data.OleDb.OleDbType.Date, 13).Value = Now
+
+
+            Comando.CommandType = CommandType.Text
+
+
+            Comando.Connection = Con
+
+            Comando.ExecuteNonQuery()
+
+
+            Con.Close()
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+
+
+
+
+    End Sub
 
     Private Sub ConferiEstMin2()
 
         Dim intEstqMin As Integer
         Dim intEm_Estq As Integer
 
+        ''DataGridView.Rows[rowIndex].Cells["Em Estoque"].Style.BackColor = Color.Yellow;
+        ''  dgEntradProduto.Rows(1).Cells("Em Estoque").Style.BackColor = Color.Yellow
+
         For i As Integer = 0 To dgEntradProduto.Rows.Count() - 1
 
             'pegando o valor Em_estoque/varendo as linha de cima para baixo
-            intEm_Estq = dgEntradProduto.Rows(i).Cells(5).Value.ToString
+            intEm_Estq = dgEntradProduto.Rows(i).Cells(6).Value.ToString
 
             'pegando valor EstqMinimo/varendo as linha de cima para baixo
-            intEstqMin = dgEntradProduto.Rows(i).Cells(7).Value
+            intEstqMin = dgEntradProduto.Rows(i).Cells(8).Value
 
             If intEm_Estq < intEstqMin Then
                 dgEntradProduto.Rows(i).DefaultCellStyle.ForeColor = Color.Red
 
                 '  dgEntradProduto.Columns(12).Name = "Repor estoque"
-
+                dgEntradProduto.Columns(6).DefaultCellStyle.BackColor = Color.Blue
 
 
 
 
             End If
 
+            ''Aqui coloco a coluna Valor venda produto em destaque
+            dgEntradProduto.Rows(i).Cells("Vlr_Venda").Style.BackColor = Color.Red
+            ''Aqui coloco a coluna Em Estoque em destaque
+            dgEntradProduto.Rows(i).Cells("Em_Estoque").Style.BackColor = Color.Yellow
         Next
 
 
@@ -71,19 +138,14 @@ Public Class FormEntradaProduto
         End Try
     End Sub
 
+    Private Sub FormatGridViewProdut()
 
-    Private Sub FormatGridView()
         With dgEntradProduto
 
             '''''''escondendo colunas------
             .Columns(5).Visible = False
             '.Columns(8).Visible = False
-            '.Columns(9).Visible = False
-            '.Columns(10).Visible = False
-            '.Columns(11).Visible = False
-            '.Columns(12).Visible = False
-            '.Columns(13).Visible = False
-            '.Columns(14).Visible = False
+
 
 
             '''''''Regulando tamanho colunas-----
@@ -97,13 +159,12 @@ Public Class FormEntradaProduto
             .Columns(2).HeaderText = "Produto"
             .Columns(3).HeaderText = "Total Entrada"
             .Columns(4).HeaderText = "Custo Unitario"
-            '   .Columns(5).HeaderText = "Valor Total Entrada"
+            .Columns(5).HeaderText = "Valor Total Entrada"
 
 
             .Columns(6).HeaderText = "Em Estoque"
             .Columns(7).HeaderText = "Valor Venda Produto"
             .Columns(8).HeaderText = "Qtd Minima Estoque"
-
 
 
             ''''''''''Aqui formato as colunas para moeda "Reais"
@@ -112,9 +173,49 @@ Public Class FormEntradaProduto
             ' .Columns(5).DefaultCellStyle.Format = "c2"
             '.Columns(7).DefaultCellStyle.Format = "c2"
 
-
+            '' dgEntradProduto.Rows(1).Cells("codBarras").Style.BackColor = Color.Yellow
         End With
 
+    End Sub
+    Private Sub FormatGridView()
+
+
+
+        With dgEntradProduto
+
+            '''''''escondendo colunas------
+            .Columns(5).Visible = False
+            '.Columns(8).Visible = False
+
+
+
+            '''''''Regulando tamanho colunas-----
+            .Columns(0).Width = 50  'codigo
+            .Columns(3).Width = 100
+            .Columns(2).Width = 150
+
+            'Editando Cabeçalho
+            .Columns(0).HeaderText = "Código "
+            .Columns(1).HeaderText = "Codigo de Barras"
+            .Columns(2).HeaderText = "Produto"
+            .Columns(3).HeaderText = "Total Entrada"
+            .Columns(4).HeaderText = "Custo Unitario"
+            .Columns(5).HeaderText = "Valor Total Entrada"
+
+
+            .Columns(6).HeaderText = "Em Estoque"
+            .Columns(7).HeaderText = "Valor Venda Produto"
+            .Columns(8).HeaderText = "Qtd Minima Estoque"
+
+
+            ''''''''''Aqui formato as colunas para moeda "Reais"
+            .Columns(4).DefaultCellStyle.Format = "c2"
+            .Columns(7).DefaultCellStyle.Format = "c2"
+            ' .Columns(5).DefaultCellStyle.Format = "c2"
+            '.Columns(7).DefaultCellStyle.Format = "c2"
+
+            '' dgEntradProduto.Rows(1).Cells("codBarras").Style.BackColor = Color.Yellow
+        End With
 
 
     End Sub
@@ -128,7 +229,8 @@ Public Class FormEntradaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
 
-            Dim SQL As String = " SELECT codigo, codbarras, descproduto, vlr_unidade, vlr_venda, Em_Estoque,  Qtd_Entrada, estoque_minimo  FROM TBProduto Where DescProduto LIKE '%" & txtPesquisaProdEntr.Text & "%' "
+            Dim SQL As String = " Select Codigo, codBarras, descproduto, Qtd_Entrada,
+                                   vlr_unidade, vlr_TotalEntrada, Em_Estoque, vlr_venda,  estoque_minimo FROM TBProduto Where DescProduto LIKE '%" & txtPesquisaProdEntr.Text & "%' "
 
             Dim comando As New OleDbCommand(SQL, Con)
 
@@ -160,7 +262,9 @@ Public Class FormEntradaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
 
-            Dim SQL As String = " SELECT codigo, codbarras, descproduto, vlr_unidade, vlr_venda, Em_Estoque, Qtd_Entrada, estoque_minimo FROM TBProduto Where codBarras LIKE '%" & Convert.ToInt32(txtPesquisaProdEntr.Text) & "%' "
+            Dim SQL As String = " Select Codigo, codBarras, descproduto, Qtd_Entrada, vlr_unidade,
+                        vlr_TotalEntrada, Em_Estoque, vlr_venda,  estoque_minimo FROM TBProduto
+                        Where codBarras LIKE '%" & Convert.ToInt64(txtPesquisaProdEntr.Text) & "%' "
 
             Dim comando As New OleDbCommand(SQL, Con)
 
@@ -186,8 +290,8 @@ Public Class FormEntradaProduto
             Con.ConnectionString = My.Settings.CN1
             Con.Open()
             'Dim comando As New OleDbCommand
-            Dim Sql As String = " Select codigo, codbarras, descproduto, vlr_unidade, vlr_venda, Em_Estoque,Qtd_Entrada,
-                                  estoque_minimo FROM TBProduto"
+            Dim Sql As String = " Select Codigo, codBarras, descproduto, Qtd_Entrada, vlr_unidade, 
+                                 vlr_TotalEntrada, Em_Estoque, vlr_venda,  estoque_minimo FROM TBProduto"
             Dim comando As New OleDbCommand(Sql, Con)
 
             Dim da As OleDbDataAdapter = New OleDbDataAdapter(comando)
@@ -258,17 +362,23 @@ Public Class FormEntradaProduto
 
     End Sub
 
-    Private Sub FormEntradaProduto_Click(sender As Object, e As EventArgs) Handles MyBase.Click
 
-
-    End Sub
 
     Private Sub dgEntradProduto_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgEntradProduto.CellClick
 
+        txtEntradaProduto.Enabled = True
         txtEntradaProduto.Focus()
 
+
+
+        'pegando CodBarras
+        douCodBarras = dgEntradProduto.CurrentRow.Cells(1).Value.ToString
+        'Pegando DescriçãoProduto
+        StrProduto = dgEntradProduto.CurrentRow.Cells(2).Value.ToString
         'pegando a quantia em Qtd_Entrada
         intQtd_Entrada = dgEntradProduto.CurrentRow.Cells(3).Value.ToString
+        'pegando Valor Unitario
+        douVlrUnitario = dgEntradProduto.CurrentRow.Cells(4).Value.ToString
         'Pegando a quantidade em estoque
         Dim QTDEmEstoq As String = dgEntradProduto.CurrentRow.Cells(6).Value.ToString
         'pegando o codigo do produto
@@ -280,19 +390,16 @@ Public Class FormEntradaProduto
         txtEm_Estoque.Text = QTDEmEstoq
 
 
-
     End Sub
 
     Private Sub cbPesquisa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbPesquisaEntr.SelectedIndexChanged
+
         Try
             txtPesquisaProdEntr.Enabled = True
 
         Catch ex As Exception
 
-
-
             Return
-
 
         End Try
 
@@ -305,15 +412,22 @@ Public Class FormEntradaProduto
             '  Me.dgEntradProduto.Columns.Clear()
 
             Me.dgEntradProduto.Columns.Clear()
+
             PesquisaProduto2()
+
+            ''FormatGridViewProdut()
+
         Else
 
             Me.dgEntradProduto.Columns.Clear()
             Pesquisacodbarra2()
 
+
+
         End If
 
         FormatGridView()
+
 
         'verificando estoque baixo e colorindo
         ConferiEstMin2()
@@ -322,6 +436,7 @@ Public Class FormEntradaProduto
     End Sub
 
     Private Sub dgEntradProduto_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgEntradProduto.CellContentClick
+
 
     End Sub
 
@@ -344,13 +459,6 @@ Public Class FormEntradaProduto
     End Sub
 
     Private Sub btnSalvarEntradaProd_Click(sender As Object, e As EventArgs) Handles btnSalvarEntradaProd.Click
-        'variavel quantidade em Estoque
-        Dim intEm_Estoque As Integer
-        'variavel quantidade QtdEm_trada
-        Dim intQtd_Entrada2 As Integer
-        'varivel passando valor paametro
-        Dim param_VlrTotalEntr As Double
-
 
         Try
             If txtEntradaProduto.Text = Nothing Then
@@ -369,7 +477,7 @@ Public Class FormEntradaProduto
 
                 '--------------------somando valor do grid---------------------------------
 
-                'acrecentando entrada em Em_Estque
+                'acrecentando entrada em Em_Estoque
                 intEm_Estoque = Val(txtEm_Estoque.Text) + Val(txtEntradaProduto.Text)
                 'acrescentando o valor em Qtd_Entrada
                 intQtd_Entrada2 = Val(txtEntradaProduto.Text) + Val(intQtd_Entrada)
@@ -384,6 +492,9 @@ Public Class FormEntradaProduto
                 Comando.Parameters.Add(New OleDb.OleDbParameter("@vlr_totalEntrada", param_VlrTotalEntr))
 
                 Comando.ExecuteNonQuery()
+
+                'Atualizando Dados TBVendas
+                InsertTBEntrada()
 
 
                 Con.Close()
@@ -405,9 +516,21 @@ Public Class FormEntradaProduto
             txtCustoTotalEntr.Clear()
 
         End Try
+        'Fechando FormRelaProduEstoque para atualizar
+        FormRelaProdutEstoq.Close()
+
+        'verificando estoque baixo e colorindo
+        ConferiEstMin2()
+
+        'chamando FormRelaProduto
+        FormRelaProdutEstoq.Show()
+        FormRelaProdutEstoq.Refresh()
+
+        Form1.Close()
 
         'aqui atualizo o registro apos entrada
         AtualizaRegistro2()
+
 
         'formatando novamente Grid
         FormatGridView()
@@ -415,11 +538,19 @@ Public Class FormEntradaProduto
         'verificando estoque baixo e colorindo
         ConferiEstMin2()
 
+        '---------------Mudando a cor de Cabeçalho DatagridView------------------
+        dgEntradProduto.EnableHeadersVisualStyles = False
+        'muda cor Headers
+        dgEntradProduto.ColumnHeadersDefaultCellStyle.BackColor = Color.Silver
+        'mudar co lateral esquerda
+        'dgSaidaProduto.RowHeadersDefaultCellStyle.BackColor = Color.Black
+
     End Sub
 
 
     Private Sub txtEntradaProduto_LostFocus(sender As Object, e As EventArgs) Handles txtEntradaProduto.LostFocus
-
+        txtCustoUnitario.Enabled = True
+        txtCustoUnitario.Select()
 
     End Sub
 
@@ -428,6 +559,8 @@ Public Class FormEntradaProduto
     End Sub
 
     Private Sub txtCustoUnitario_LostFocus(sender As Object, e As EventArgs) Handles txtCustoUnitario.LostFocus
+        btnSalvarEntradaProd.Enabled = True
+
 
         Try
             Dim douCusTotal As Double
@@ -474,10 +607,6 @@ Public Class FormEntradaProduto
 
     End Sub
 
-    Private Sub txtCustoTotalEntr_GotFocus(sender As Object, e As EventArgs) Handles txtCustoTotalEntr.GotFocus
-
-
-    End Sub
 
     Private Sub txtCustoTotalEntr_LostFocus(sender As Object, e As EventArgs) Handles txtCustoTotalEntr.LostFocus
 
@@ -496,5 +625,17 @@ Public Class FormEntradaProduto
             e.Handled = True
 
         End If
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub dgEntradProduto_ColumnToolTipTextChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles dgEntradProduto.ColumnToolTipTextChanged
+
+    End Sub
+
+    Private Sub FormEntradaProduto_Click(sender As Object, e As EventArgs) Handles Me.Click
+
     End Sub
 End Class
